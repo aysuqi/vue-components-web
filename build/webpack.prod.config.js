@@ -17,7 +17,7 @@ module.exports = merge(webpackBaseConfig, {
     output: {
         publicPath: './',//'https://iview.github.io/iview-admin/dist/',
         filename: '[name].[hash].js',
-        // chunkFilename: '[name].[hash].js'
+        chunkFilename: '[name].[hash].js'
     },
     plugins: [
         new ExtractTextPlugin({
@@ -34,12 +34,12 @@ module.exports = merge(webpackBaseConfig, {
                 drop_console: true
             }
         }),
-        // new HtmlWebpackPlugin({
-        //     title:'报账系统升级',
-        //     filename: 'index.html',
-        //     template: './src/template/index.ejs',
-        //     inject: true,
-        //     chunks: ['main']
-        // }),
+        new HtmlWebpackPlugin({
+            title: 'vue-组件库',
+            filename: 'index.html',
+            template: './src/template/index.ejs',
+            inject: true,
+            chunks: ['main']
+        }),
     ]
 });

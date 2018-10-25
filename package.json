@@ -1,16 +1,16 @@
 {
   "name": "vue-components-web",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "这里封装了大量vue常用组件,能满足绝大部分前端开发需求",
   "main": "src/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server  --host 0.0.0.0  --inline --hot --compress --history-api-fallback --config build/webpack.dev.config.js",
-    "build": "cross-env  node ./build/build.js",
+    "build": "webpack --progress --hide-modules --config build/webpack.prod.config.js",
     "autobuild": "cross-env  node ./build/auto_build.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iview/iview-admin.git"
+    "url": "https://github.com/husanfeng/vue-components-web.git"
   },
   "author": "husanfeng",
   "license": "MIT",
@@ -92,9 +92,5 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "2.7.1",
     "webpack-merge": "^3.0.0"
-  },
-  "bugs": {
-    "url": "https://github.com/iview/iview-admin/issues"
-  },
-  "homepage": "https://github.com/iview/iview-admin#readme"
+  }
 }

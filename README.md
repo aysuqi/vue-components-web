@@ -12,5 +12,5 @@ npm run build
 npm run build --report
 ## 效果展示
 - 响应式布局首页
-![image](https://github.com/iview/iview-admin/raw/dev/github-gif/home.gif)
+![image](https://github.com/husanfeng/vue-components-web/blob/master/user.JPG?raw=true)
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

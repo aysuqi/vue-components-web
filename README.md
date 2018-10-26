@@ -11,7 +11,7 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
- ![image](https://raw.githubusercontent.com/husanfeng/vue-components-web/master/user.JPG)
+ ![图片说明](https://raw.githubusercontent.com/husanfeng/vue-components-web/master/user.JPG)
 
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

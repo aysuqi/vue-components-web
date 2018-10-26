@@ -1,3 +1,10 @@
+<p align="center">
+    <a href="http://www.cnblogs.com/husfBK/">
+        <img width="200" src="https://cn.vuejs.org/images/logo.png">
+    </a>
+</p>
+
+
 
 # install dependencies
 npm install

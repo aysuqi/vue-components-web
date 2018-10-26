@@ -11,6 +11,7 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+![image](https://github.com/iview/iview-admin/raw/dev/github-gif/home.gif)
  ![图片说明](https://raw.githubusercontent.com/husanfeng/vue-components-web/master/user.JPG)
 
 

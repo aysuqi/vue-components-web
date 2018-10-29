@@ -1,3 +1,8 @@
+// 仅在开发环境下使用mock数据
+if (process.env.API.mock) {
+  require('@/mock/index.js')
+}
+
 export default class Server {
   constructor(params) {
   }

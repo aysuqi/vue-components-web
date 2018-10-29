@@ -8,7 +8,7 @@ import Vuex from 'vuex';
 import './axios.config.js'
 import store from './vuex/index.js'
 import PageModal from './components/pageModal/index.js'
-
+import mock from "./mock"
 Vue.prototype.$pageModal = PageModal;
 Vue.config.devtools = process.env.API.devtools;
 window.$channel = new Vue();

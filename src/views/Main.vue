@@ -70,4 +70,7 @@ export default {
   margin-top: 15px;
   height: inherit;
 }
+.wrapper-content {
+  background-color: rgb(241, 241, 234);
+}
 </style>

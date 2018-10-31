@@ -5,7 +5,7 @@
 </p>
 
 # vue-components-web
-
+## 在线预览 https://husanfeng.github.io/vue-components-web/#/
 ## 当前版本:v0.0.3
 ## install dependencies
 npm install

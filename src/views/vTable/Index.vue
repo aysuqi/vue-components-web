@@ -37,7 +37,7 @@
 </template>
 <script>
 // import { EMSTable, DataSelect } from "ems-components";
-import EMSTable from "../../components/emsTablex/EMSTable.1.vue";
+import EMSTable from "../../components/emsTablex/EMSTable.vue";
 import DataSelect from "../../components/dataSelect/DataSelect.vue";
 
 import { mapState, mapGetters, mapMutations } from "vuex";
@@ -48,6 +48,7 @@ export default {
   components: { EMSTable, DataSelect },
   data() {
     return {
+      resourceData: [],
       isShowBusiness: true,
       server: server,
       isERPeffectiveness: [],

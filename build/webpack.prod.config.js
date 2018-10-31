@@ -35,7 +35,7 @@ module.exports = merge(webpackBaseConfig, {
             }
         }),
         new HtmlWebpackPlugin({
-            title: 'vue-组件库',
+            title: '报账系统升级',
             filename: 'index.html',
             template: './src/template/index.ejs',
             inject: true,

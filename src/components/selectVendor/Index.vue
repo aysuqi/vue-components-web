@@ -1,7 +1,7 @@
 <template>
-  <div class="vendor">
+  <div class="close-div">
     <Input v-model="venName" ref="vendorNameInput" icon="search" :placeholder="`请选择${typeName}`" @click.native="select()"></Input>
-    <Icon type="close" class="close-btn" @click.native="clean"></Icon>
+    <Icon type="close" class="close-btn" @click.native="clean" v-show="isShowCloseIcon"></Icon>
   </div>
 </template>
 
@@ -71,6 +71,7 @@ export default {
 
   data() {
     return {
+      isShowCloseIcon: false,
       venName: this.vendorName,
       reimburseInfo: {}
     };
@@ -100,31 +101,42 @@ export default {
             isPublic: this.isPublic,
             buCode: this.buCode,
             vendorType: this.vendorType,
-            employeeNo: this.employeeNo,
+            employeeNo: this.employeeNo
           }
         },
         data => {
-          this.reimburseInfo = JSON.parse(JSON.stringify(data))
-          this.venName = data.vendorName
+          this.reimburseInfo = JSON.parse(JSON.stringify(data));
+          this.venName = data.vendorName;
           this.$emit("selected", this.reimburseInfo);
           this.$emit("input", data.vendorName);
           this.$refs["vendorNameInput"].focus();
+          this.isShowCloseIcon = true;
         }
       );
     },
 
+    // clean() {
+    //   this.reimburseInfo = {};
+    //   this.venName = ""
+    //   this.$emit("selected", this.reimburseInfo);
+    //   this.$emit("input", "");
+    // }
+    // 清空选择按钮，点击后删除code和name
     clean() {
       this.reimburseInfo = {};
-      this.venName = ""
-      this.$emit("selected", this.reimburseInfo);
+      this.venName = "";
+      this.$emit("cleanSelected");
       this.$emit("input", "");
+      this.isShowCloseIcon = false;
+      this.$refs["ipt"].focus();
     }
   }
 };
 </script>
 
-<style lang='less' scoped>
-.vendor {
+ <style lang='less' scoped>
+.close-div {
+  width: 100%;
   position: relative;
   display: inline-block;
 
@@ -134,7 +146,7 @@ export default {
     top: 50%;
     margin-top: -7px;
     font-size: 14px;
-    color: #80848f;
+    color: #ff0000;
     display: none;
     cursor: pointer;
   }

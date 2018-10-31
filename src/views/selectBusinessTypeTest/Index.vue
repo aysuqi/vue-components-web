@@ -17,7 +17,7 @@
     <Row class="example">
       <Col class="example-demo" span="24">
       <div class="example-case">
-        <SelectBusinessType v-model="businessType" @handleSelect="handleSelect" style="width:200px"></SelectBusinessType>
+        <SelectBusinessType v-model="businessType" :isMultiple="true" :len="999" @handleSelect="handleSelect" style="width:200px"></SelectBusinessType>
       </div>
 
       <header class="example-header">
@@ -118,7 +118,8 @@ export default {
   methods: {
     handleSelect(data) {
       console.log(JSON.stringify(data));
-      this.businessType = data[0].title;
+
+      this.businessType = data["names"].join(",");
     }
   }
 };

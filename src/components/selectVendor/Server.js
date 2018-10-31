@@ -1,12 +1,12 @@
 // 仅在开发环境下使用mock数据
-// if(process.env.API.mock) {
-//   require('./mock')
-// }
+if (process.env.API.mock) {
+  require('@/mock/index.js')
+}
 
 export default class Server {
 
   constructor(params) {
-    
+
   }
 
   _errReporter(error) {
@@ -28,9 +28,9 @@ export default class Server {
   /**
     * 拉取列表数据
     */
-   getVendors(param = {}) {
-      // return this._axios(`${process.env.API.emsBaseDataURL}/vendor/findPagedVendorList`, param)
-      return this._axios(`${process.env.API.emsBaseDataURL}/vendor/findVendorListByType`, param)
-    }
+  getVendors(param = {}) {
+    // return this._axios(`${process.env.API.emsBaseDataURL}/vendor/findPagedVendorList`, param)
+    return this._axios(`${process.env.API.emsBaseDataURL}/vendor/findVendorListByType`, param)
+  }
 
 }

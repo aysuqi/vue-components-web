@@ -25,6 +25,9 @@ ems-components-web组件库是在iview UI基础上进行的二次封装，添加
 - tree(树)组件
 ## 效果展示
 - table组件
-![image](https://github.com/iview/iview-admin/raw/dev/github-gif/home.gif)
+![image](https://github.com/husanfeng/vue-components-web/blob/master/static/table.png?raw=true)
 - teee(树)组件
-![image](https://github.com/iview/iview-admin/raw/dev/github-gif/home.gif)
+![image](https://github.com/husanfeng/vue-components-web/blob/master/static/tree.png?raw=true)
+- select组件
+![image](https://github.com/husanfeng/vue-components-web/blob/master/static/select.png?raw=true)
+

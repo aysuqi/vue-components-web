@@ -11,6 +11,11 @@ export default new Router({
       component: Main,
       children: [
         {
+          path: '/',
+          name: 'v-table',
+          component: resolve => { require(['../views/vTable/Index.vue'], resolve); }
+        },
+        {
           path: 'data-select-test',
           name: 'data-select-test',
           component: resolve => { require(['../views/dataSelectTest/Index.vue'], resolve); }
@@ -55,7 +60,7 @@ export default new Router({
           name: 'select-company',
           component: resolve => { require(['../views/selectCompanyTest/Index.vue'], resolve); }
         },
-          {
+        {
           path: 'v-table',
           name: 'v-table',
           component: resolve => { require(['../views/vTable/Index.vue'], resolve); }

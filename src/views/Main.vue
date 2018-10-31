@@ -6,41 +6,36 @@
                 <Menu theme="light" active-name="1" width="auto">
                     <MenuGroup title="组件">
                         <MenuItem name="1">
-                        <router-link :to="{ path: 'data-select-test'}">DataSelect下拉选择组件</router-link>
-                        </MenuItem>
-                        <MenuItem name="2">
-                        <router-link :to="{ path: 'business-type-tree'}">tree组件</router-link>
-                        </MenuItem>
-                        <MenuItem name="3">
-                        <router-link :to="{ path: 'select-business-type'}">弹出框选择组件</router-link>
-                        </MenuItem>
-                        <MenuItem name="4">
-                        <router-link :to="{ path: 'pay-way-info'}">Button按钮显示表单组件</router-link>
-                        </MenuItem>
-                        <MenuItem name="5">
-                        <router-link :to="{ path: 'edite-vendor-info'}">input点击弹出框表单</router-link>
-                        </MenuItem>
-                        <!-- <MenuItem name="6">
-                        <router-link :to="{ path: 'select-city'}">input弹出table组件选择</router-link>
-                        </MenuItem> -->
-                        <MenuItem name="6">
-                        <router-link :to="{ path: 'select-vendor'}">input弹出table组件选择</router-link>
-                        </MenuItem>
-                        <!-- <MenuItem name="8">
-                        <router-link :to="{ path: 'select-vendor-bank-info'}">选择供应商银行账号</router-link>
-                        </MenuItem> -->
-                        <MenuItem name="7">
-                        <router-link :to="{ path: 'select-company'}">选择归属公司</router-link>
-                        </MenuItem>
-                        <MenuItem name="8">
                         <router-link :to="{ path: 'v-table'}">功能强大的v-table</router-link>
                         </MenuItem>
+                        <MenuItem name="2">
+                        <router-link :to="{ path: 'data-select-test'}">DataSelect下拉选择组件</router-link>
+                        </MenuItem>
+                        <MenuItem name="3">
+                        <router-link :to="{ path: 'business-type-tree'}">tree组件</router-link>
+                        </MenuItem>
+                        <MenuItem name="4">
+                        <router-link :to="{ path: 'select-business-type'}">弹出框选择组件</router-link>
+                        </MenuItem>
+                        <MenuItem name="5">
+                        <router-link :to="{ path: 'pay-way-info'}">弹出框显示表单</router-link>
+                        </MenuItem>
+                        <MenuItem name="6">
+                        <router-link :to="{ path: 'edite-vendor-info'}">编辑供应商信息</router-link>
+                        </MenuItem>
+                        <MenuItem name="7">
+                        <router-link :to="{ path: 'select-vendor'}">选择个人/供应商</router-link>
+                        </MenuItem>
+                        <MenuItem name="8">
+                        <router-link :to="{ path: 'select-company'}">选择归属公司</router-link>
+                        </MenuItem>
+
                     </MenuGroup>
                 </Menu>
             </div>
             </Col>
             <Col span="20">
-            <div class="wrapper-content ivu-article" style="height:100%,">
+            <div class="wrapper-content ivu-article" style="height:100%">
                 <article>
                     <router-view></router-view>
                 </article>
@@ -71,6 +66,6 @@ export default {
   height: inherit;
 }
 .wrapper-content {
-  background-color: rgb(250, 246, 246);
+  background-color: rgb(241, 241, 234);
 }
 </style>

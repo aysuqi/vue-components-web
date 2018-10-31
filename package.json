@@ -1,6 +1,6 @@
 {
   "name": "vue-components-web",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "这里封装了大量vue常用组件,能满足绝大部分前端开发需求",
   "main": "src/index.js",
   "scripts": {

@@ -34,12 +34,12 @@ module.exports = merge(webpackBaseConfig, {
                 drop_console: true
             }
         }),
-        // new HtmlWebpackPlugin({
-        //     title:'报账系统升级',
-        //     filename: 'index.html',
-        //     template: './src/template/index.ejs',
-        //     inject: true,
-        //     chunks: ['main']
-        // }),
+        new HtmlWebpackPlugin({
+            title: '报账系统升级',
+            filename: 'index.html',
+            template: './src/template/index.ejs',
+            inject: true,
+            chunks: ['main']
+        }),
     ]
 });

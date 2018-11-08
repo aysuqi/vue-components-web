@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin'); // 把散落在各地的css都打包在一个xxx.css文件里
 
 function resolve(dir) {
     return path.join(__dirname, dir);
@@ -8,10 +8,10 @@ function resolve(dir) {
 
 module.exports = {
     entry: {
-        main: './src/main',
+        main: './src/main',// 入口文件
     },
     output: {
-        path: path.join(__dirname, '../dist')
+        path: path.join(__dirname, '../dist') // 打包出口
     },
     module: {
         rules: [{
@@ -39,8 +39,8 @@ module.exports = {
             test: /\.js$/,
             loader: 'babel-loader',
             include: [
-                path.join(__dirname, '../src'), 
-                path.join(__dirname, '../node_modules/ripples-core'), 
+                path.join(__dirname, '../src'),
+                path.join(__dirname, '../node_modules/ripples-core'),
                 path.join(__dirname, '../node_modules/ripples-psc'),
                 path.join(__dirname, '../node_modules/ems-accounting'),
             ]

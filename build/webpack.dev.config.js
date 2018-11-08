@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const merge = require('webpack-merge');
+const merge = require('webpack-merge'); // webpack 合并
 const webpackBaseConfig = require('./webpack.base.config.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const fs = require('fs');

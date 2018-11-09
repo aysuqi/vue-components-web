@@ -40,9 +40,9 @@ module.exports = {
             loader: 'babel-loader',
             include: [
                 path.join(__dirname, '../src'),
-                path.join(__dirname, '../node_modules/ripples-core'),
-                path.join(__dirname, '../node_modules/ripples-psc'),
-                path.join(__dirname, '../node_modules/ems-accounting'),
+                // path.join(__dirname, '../node_modules/ripples-core'),
+                // path.join(__dirname, '../node_modules/ripples-psc'),
+                // path.join(__dirname, '../node_modules/ems-accounting'),
             ]
         },
         {

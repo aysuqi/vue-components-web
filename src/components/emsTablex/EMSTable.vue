@@ -1,43 +1,43 @@
 <template>
-  <div class="emstable-wrap" ref="emstable-wrap">
-    <div class="search-bar" v-if="slots['search-bar']">
-      <div class="search-form" :class="{'expand': expandMore}">
-        <slot name="search-bar"></slot>
-      </div>
-      <div class="handle-bar">
-        <slot name="handle-bar"></slot>
-        <div class="search-form-more" @click="expandMoreSearch" v-if="isShowSearchMore">
-          <a href="javascript:;">{{!expandMore ? "更多条件" : "隐藏条件"}}</a>
-          <Icon type="chevron-down" v-if="!expandMore"></Icon>
-          <Icon type="chevron-up" v-if="expandMore"></Icon>
+    <div class="emstable-wrap" :class="{'noSearchbar': !slots['search-bar']}" ref="emstable-wrap">
+        <div class="search-bar" v-if="slots['search-bar']">
+            <div class="search-form" :class="{'expand': expandMore}">
+                <slot name="search-bar"></slot>
+            </div>
+            <div class="handle-bar">
+                <slot name="handle-bar"></slot>
+                <div class="search-form-more" @click="expandMoreSearch" v-if="isShowSearchMore">
+                    <a href="javascript:;">{{!expandMore ? "更多条件" : "隐藏条件"}}</a>
+                    <Icon type="chevron-down" v-if="!expandMore"></Icon>
+                    <Icon type="chevron-up" v-if="expandMore"></Icon>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="single-table-con">
+        <div class="single-table-con">
 
-      <Table ref="table" :border="border" stripe :loading="loading" :highlight-row="highlightRow" :data="tableData" :columns="tableColumns" :row-class-name="rowClassName" :height="tableHeight" @on-current-change="onCurrentChange" @on-selection-change="selectionChange" @on-sort-change="sortHandle" @on-row-click="rowClickMt" @on-expand="rowClickExpand" :class="{'rowclick': !!rowClickHandle, 'nodatas': !loading && !total, 'fullFill': !expandMore && !!slots['search-bar']}">
-        <div slot="footer">
-          <Row class="footer-tools">
-            <Col :span="12" class="footer-tools-col" :class="{
+            <Table ref="table" :border="border" stripe :loading="loading" :highlight-row="highlightRow" :data="tableData" :columns="tableColumns" :row-class-name="rowClassName" :height="tableHeight" @on-current-change="onCurrentChange" @on-selection-change="selectionChange" @on-sort-change="sortHandle" @on-row-click="rowClickMt" @on-expand="rowClickExpand" :class="{'rowclick': !!rowClickHandle, 'nodatas': !loading && !total, 'fullFill': !expandMore && !!slots['search-bar']}">
+                <div slot="footer">
+                    <Row class="footer-tools">
+                        <Col :span="12" class="footer-tools-col" :class="{
                       'table-tools-btns': !!slots['table-bar'], 
                       'footer-tools-btns': !!slots['footer-bar']}">
-            <slot name="table-bar"></slot>
-            <slot name="footer-bar"></slot>
-            </Col>
-            <Col :span="12" class="footer-tools-pages">
-            <Page :placement="placement" :total="total" :show-total="showTotal" :page-size-opts="pageSizeOpts" :page-size="param.page.pageSize" :current="param.page.currentPage" :show-sizer="showSizer" :show-elevator="showElevator" @on-change="changePage" @on-page-size-change="changePageSize" v-if="isPage">
-              <span>共{{total}}条/每页{{param.page.pageSize}}条</span>
-            </Page>
-            </Col>
-          </Row>
+                        <slot name="table-bar"></slot>
+                        <slot name="footer-bar"></slot>
+                        </Col>
+                        <Col :span="12" class="footer-tools-pages">
+                        <Page :placement="placement" :total="total" :show-total="showTotal" :page-size-opts="pageSizeOpts" :page-size="param.page.pageSize" :current="param.page.currentPage" :show-sizer="showSizer" :show-elevator="showElevator" @on-change="changePage" @on-page-size-change="changePageSize" v-if="isPage">
+                            <span>共{{total}}条/每页{{param.page.pageSize}}条</span>
+                        </Page>
+                        </Col>
+                    </Row>
 
-          <div class="ivu-table-nodata" v-if="!loading && !total">
-            <Icon type="information-circled" />
-            <span style="vertical-align: middle">暂无信息</span>
-          </div>
-        </div>
-      </Table>
-      <!-- <div style="margin: 10px;overflow: hidden" v-if="isPage">
+                    <div class="ivu-table-nodata" v-if="!loading && !total">
+                        <Icon type="information-circled" />
+                        <span style="vertical-align: middle">暂无信息</span>
+                    </div>
+                </div>
+            </Table>
+            <!-- <div style="margin: 10px;overflow: hidden" v-if="isPage">
                 <div style="float: right;">
                     <Page 
                       :placement="placement" 
@@ -53,8 +53,8 @@
                     </Page>
                 </div>
             </div> -->
+        </div>
     </div>
-  </div>
 </template>
 <script>
 export default {
@@ -190,6 +190,10 @@ export default {
     border: {
       type: Boolean,
       default: true
+    },
+    autoFill: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -290,7 +294,7 @@ export default {
           title: "序号",
           type: "index",
           align: "center",
-          width: 30
+          width: 80
         });
       }
 
@@ -513,7 +517,7 @@ export default {
           this.tableHeight =
             winH - searchBarH - 78 - 38 - coreModalFooterH - 13;
         } else {
-          this.tableHeight = winH - searchBarH - tabsbarH - 78;
+          this.tableHeight = winH - searchBarH - tabsbarH - 78 - 35;
         }
       }
     },
@@ -548,7 +552,9 @@ export default {
         });
 
         // 填充空行
-        this.fill(newVal);
+        if (this.autoFill) {
+          this.fill(newVal);
+        }
       },
       immediate: true
     },

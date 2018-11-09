@@ -1,107 +1,162 @@
+
 <template>
-  <div class="wrapper" id="app" style="height:100%">
-    <div class="wrapper-header">
-      <ul class="ivu-menu ivu-menu-light ivu-menu-horizontal">
-        <div class="wrapper-header-nav">
-          <div class="wrapper-header">
-            <ul class="ivu-menu ivu-menu-light ivu-menu-horizontal">
-              <div class="wrapper-header-nav">
-                <a href="/" class="wrapper-header-nav-logo">
-                  <img src="https://qcloudtest-1256640731.cos.ap-guangzhou.myqcloud.com/1525871803220-Symp4ueRG.jpg">
-                </a>
+    <div class="layout">
+        <Layout>
+            <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+                <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
+                    <MenuItem name="1-1">
+                    <Icon type="ios-navigate"></Icon>
+                    <router-link :to="{ path: 'v-table'}">功能强大的v-table</router-link>
+                    </MenuItem>
+                    <MenuItem name="1-2">
+                    <Icon type="ios-search"></Icon>
+                    <router-link :to="{ path: 'data-select-test'}">下拉选择组件</router-link>
+                    </MenuItem>
+                    <MenuItem name="1-3">
+                    <Icon type="ios-settings"></Icon>
+                    <router-link :to="{ path: 'business-type-tree'}">tree组件</router-link>
+                    </MenuItem>
 
-                <div class="wrapper-header-nav-list">
-                  <li class="ivu-menu-item">
-                    <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-                      <!-- <FormItem prop="user">
-                        <Input type="text" v-model="form.userCode" placeholder="用户名">
-                        <Icon type="ios-person-outline" slot="prepend"></Icon>
-                        </Input>
-                      </FormItem>
-                      <FormItem prop="password">
-                        <Input type="password" v-model="form.password" placeholder="密码">
-                        <Icon type="ios-locked-outline" slot="prepend"></Icon>
-                        </Input>
-                      </FormItem>
-                      <FormItem>
-                        <Button type="primary" @click="login('formInline')">登录</Button>
-                      </FormItem> -->
-                    </Form>
-                  </li>
-                </div>
-              </div>
-            </ul>
-          </div>
-        </div>
-      </ul>
-    </div>
-    <div style="height:100%">
-      <router-view />
-    </div>
+                    <MenuItem name="1-4">
+                    <Icon type="ios-navigate"></Icon>
+                    <router-link :to="{ path: 'select-business-type'}">弹出框选择组件</router-link>
+                    </MenuItem>
+                    <MenuItem name="1-5">
+                    <Icon type="ios-search"></Icon>
+                    <router-link :to="{ path: 'pay-way-info'}">弹出框显示表单</router-link>
+                    </MenuItem>
+                    <MenuItem name="1-6">
+                    <Icon type="ios-settings"></Icon>
+                    <router-link :to="{ path: 'edite-vendor-info'}">编辑供应商信息</router-link>
+                    </MenuItem>
 
-  </div>
+                    <MenuItem name="1-7">
+                    <Icon type="ios-navigate"></Icon>
+                    <router-link :to="{ path: 'select-vendor'}">选择个人/供应商</router-link>
+                    </MenuItem>
+                    <MenuItem name="1-8">
+                    <Icon type="ios-search"></Icon>
+                    <router-link :to="{ path: 'select-company'}">选择归属公司</router-link>
+                    </MenuItem>
+                    <!-- <MenuItem name="1-9">
+          <Icon type="ios-settings"></Icon>
+          <router-link :to="{ path: 'edite-vendor-info'}">编辑供应商信息</router-link>
+          </MenuItem> -->
+
+                </Menu>
+            </Sider>
+            <Layout>
+                <Header :style="{padding: 0}" class="layout-header-bar">
+                    <!-- <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px' , background:'#ff00ff'}" type="md-menu" size="24"></Icon> -->
+                    <div style="display:inline">
+                        <img src="../user.jpg" @click="collapsedSider">
+                    </div>
+
+                    <div class="headDes">
+                        <h2>vue组件库</h2>
+                    </div>
+                    <!-- <div class="wrapper-header-nav-list">
+
+            <p>78945612</p>
+
+          </div> -->
+                </Header>
+                <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
+                    <router-view />
+                </Content>
+            </Layout>
+        </Layout>
+    </div>
 </template>
-
 <script>
-import CryptoJS from "crypto-js";
-import Cookies from "js-cookie";
-import GlobalStyles from "@/components/globalStyles/Index.vue";
 export default {
-  name: "App",
+  name: "app",
   data() {
     return {
-      form: {
-        userCode: "",
-        password: "",
-        captcha: "1234"
-      }
+      isCollapsed: false
     };
   },
+  computed: {
+    rotateIcon() {
+      return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
+    },
+    menuitemClasses() {
+      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
+    }
+  },
   methods: {
-    // login() {
-    //   this.form.userCode = this.form.userCode.trim();
-    //   this.form.password = this.form.password.trim();
-    //   this.form.captcha = this.form.captcha.trim();
-    //   $store
-    //     .dispatch("SingnIn", {
-    //       params: this.encrypt(JSON.stringify(this.form))
-    //     })
-    //     .then(res => {
-    //       if (res.statusCode == -1) {
-    //         this.$Message.error(res.msg);
-    //       } else {
-    //         sessionStorage.crctoken = res.dataResult.crctoken;
-    //         console.log(sessionStorage.crctoken);
-    //         $axios.defaults.headers.crctoken = sessionStorage.crctoken;
-    //         this.$Message.success("登录成功！");
-    //       }
-    //     });
-    // },
-    // encrypt(data) {
-    //   var key = CryptoJS.enc.Latin1.parse(process.env.API.key.substring(0, 16));
-    //   var iv = CryptoJS.enc.Latin1.parse(process.env.API.key.substring(0, 16));
-    //   return CryptoJS.AES.encrypt(data, key, {
-    //     iv: iv,
-    //     mode: CryptoJS.mode.CBC,
-    //     padding: CryptoJS.pad.ZeroPadding
-    //   }).toString();
-    // }
+    collapsedSider() {
+      debugger;
+      this.$refs.side1.toggleCollapse();
+    }
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-  position: relative;
+<style scoped>
+img {
+  border-style: none;
+  margin-left: 2px;
+  width: 60px;
+  height: 60px;
 }
-.login {
-  position: absolute;
-  top: -60px;
-  right: 0px;
+
+.headDes {
+  float: right;
+  margin-right: 50%;
+}
+.layout {
+  height: 100%;
+  border: 1px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.layout-logo-left {
+  width: 90%;
+  height: 30px;
+  background: #5b6270;
+  border-radius: 3px;
+  margin: 15px auto;
+}
+.menu-icon {
+  transition: all 0.3s;
+}
+.rotate-icon {
+  transform: rotate(-90deg);
+}
+.menu-item span {
+  display: inline-block;
+  overflow: hidden;
+  width: 69px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  transition: width 0.2s ease 0.2s;
+}
+.menu-item i {
+  transform: translateX(0px);
+  transition: font-size 0.2s ease, transform 0.2s ease;
+  vertical-align: middle;
+  font-size: 16px;
+}
+.collapsed-menu span {
+  width: 0px;
+  transition: width 0.2s ease;
+}
+.collapsed-menu i {
+  transform: translateX(5px);
+  transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
+  vertical-align: middle;
+  font-size: 22px;
+}
+.ivu-layout.ivu-layout-has-sider {
+  height: 100%;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 </style>

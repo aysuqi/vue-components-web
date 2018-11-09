@@ -1,24 +1,24 @@
 <template>
-  <div>
-    <EMSTable ref="vendorTable" :server="server" action="getVendors" :params="initParams" :columns="columns" :highlight-row="true" @on-selection-change="onSelectionChange">
-      <Form :model="searchForm" ref="searchForm" slot="search-bar" label-position="top" inline>
-        <Form-item prop="vendorCode" :label="`${typeName}编码`" v-if="typeName === '供应商'">
-          <Input type="text" maxlength="30" v-model="searchForm.vendorCode" :placeholder="`请输入${typeName}编码`"></Input>
-        </Form-item>
-        <Form-item prop="vendorName" :label="`${typeName}名称`">
-          <Input type="text" maxlength="30" v-model="searchForm.vendorName" :placeholder="`请输入${typeName}名称`"></Input>
-        </Form-item>
-      </Form>
-      <div slot="handle-bar">
-        <Button @click.native="search" type="warning" icon="search">查询</Button>
-        <Button @click.native="reset" type="info" icon="loop">重置</Button>
-      </div>
-    </EMSTable>
-  </div>
+    <div>
+        <EMSTable ref="vendorTable" :server="server" action="getVendors" :params="initParams" :columns="columns" :highlight-row="true" @on-selection-change="onSelectionChange">
+            <Form :model="searchForm" ref="searchForm" slot="search-bar" label-position="top" inline>
+                <Form-item prop="vendorCode" :label="`${typeName}编码`" v-if="typeName === '供应商'">
+                    <Input type="text" maxlength="30" v-model="searchForm.vendorCode" :placeholder="`请输入${typeName}编码`"></Input>
+                </Form-item>
+                <Form-item prop="vendorName" :label="`${typeName}名称`">
+                    <Input type="text" maxlength="30" v-model="searchForm.vendorName" :placeholder="`请输入${typeName}名称`"></Input>
+                </Form-item>
+            </Form>
+            <div slot="handle-bar">
+                <Button @click.native="search" type="warning" icon="search">查询</Button>
+                <Button @click.native="reset" type="info" icon="loop">重置</Button>
+            </div>
+        </EMSTable>
+    </div>
 </template>
 
 <script>
-import EMSTable from "../emsTable/EMSTable.vue";
+import EMSTable from "../emsTablex/EMSTable.vue";
 import Server from "./Server";
 const server = new Server();
 

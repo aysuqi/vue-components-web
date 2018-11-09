@@ -13,21 +13,22 @@ Vue.prototype.$pageModal = PageModal;
 Vue.config.devtools = process.env.API.devtools;
 window.$channel = new Vue();
 
+// Vue.config.devtools = true
 Vue.config.productionTip = false
 Vue.use(iView);
 Vue.use(Vuex);
 window.$store = store;
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  store: store,
-  components: { App },
-  // template: '<App/>'
-  render: h => h(App),
-  created() {
-    // if (!!sessionStorage.crctoken) {
-    //     $axios.defaults.headers.crctoken = sessionStorage.crctoken
-    // }
-  },
+    el: '#app',
+    router,
+    store: store,
+    components: { App },
+    // template: '<App/>'
+    render: h => h(App),
+    created() {
+        // if (!!sessionStorage.crctoken) {
+        //     $axios.defaults.headers.crctoken = sessionStorage.crctoken
+        // }
+    },
 })

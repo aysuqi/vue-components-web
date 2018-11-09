@@ -1,39 +1,39 @@
 <template>
-  <div>
-    <EMSTable :server="server" ref="businessBigClassTable" action="QueryaccountControllerList" :params="accountControllerSearchForm" :columnsFn="accountControllerColumns" :highlight-row="true" :onSelectionChange="onSelectionChange">
-      <Form :model="accountControllerSearchForm" ref="accountControllerSearchForm" :rules="rule" slot="search-bar" label-position="top" class="ivu-form-no-margin-bottom" inline>
-        <Form-item prop="accountItemCode" label="会计科目编码">
-          <Input type="text" maxlength="30" v-model="accountControllerSearchForm.accountItemCode" placeholder="会计科目编码"></Input>
-        </Form-item>
-        <Form-item prop="accountItemName" label="会计科目名称">
-          <Input type="text" maxlength="30" v-model="accountControllerSearchForm.accountItemName" placeholder="会计科目名称"></Input>
-        </Form-item>
-        <Form-item prop="childAccountItemCode" label="子目编码">
-          <Input type="text" maxlength="30" v-model="accountControllerSearchForm.childAccountItemCode" placeholder="子目编码"></Input>
-        </Form-item>
-        <Form-item prop="childAccountItemName" label="子目名称">
-          <Input type="text" maxlength="30" v-model="accountControllerSearchForm.childAccountItemName" placeholder="子目名称"></Input>
-        </Form-item>
-        <Form-item prop="buCode" label="所属BU">
-          <DataSelect class="" v-model="accountControllerSearchForm.buCode" code="BU" transfer @loadFinish="loadFinishVendorType"></DataSelect>
-        </Form-item>
-        <Form-item prop="valid" label="ERP有效性">
-          <Select v-model="accountControllerSearchForm.valid" @on-change="setGroupName" transfer clearable>
-            <Option v-for="(option, index) in isERPeffectiveness" :value="option.value" :key="index">{{option.label}}</Option>
-          </Select>
-        </Form-item>
-        <Form-item prop="emsIsValidity" label="EMS有效性">
-          <Select v-model="accountControllerSearchForm.emsIsValidity" @on-change="setGroupName" transfer clearable>
-            <Option v-for="(option, index) in isEMSeffectiveness" :value="option.value" :key="index">{{option.label}}</Option>
-          </Select>
-        </Form-item>
-      </Form>
-      <div slot="handle-bar">
-        <Button @click.native="search" type="warning" icon="search">查询</Button>
-        <Button @click.native="reset" type="info" icon="loop">重置</Button>
-      </div>
-    </EMSTable>
-  </div>
+    <div>
+        <EMSTable :server="server" ref="businessBigClassTable" action="QueryaccountControllerList" :params="accountControllerSearchForm" :columnsFn="accountControllerColumns" :highlight-row="true" :onSelectionChange="onSelectionChange">
+            <Form :model="accountControllerSearchForm" ref="accountControllerSearchForm" :rules="rule" slot="search-bar" label-position="top" class="ivu-form-no-margin-bottom" inline>
+                <Form-item prop="accountItemCode" label="会计科目编码">
+                    <Input type="text" maxlength="30" v-model="accountControllerSearchForm.accountItemCode" placeholder="会计科目编码"></Input>
+                </Form-item>
+                <Form-item prop="accountItemName" label="会计科目名称">
+                    <Input type="text" maxlength="30" v-model="accountControllerSearchForm.accountItemName" placeholder="会计科目名称"></Input>
+                </Form-item>
+                <Form-item prop="childAccountItemCode" label="子目编码">
+                    <Input type="text" maxlength="30" v-model="accountControllerSearchForm.childAccountItemCode" placeholder="子目编码"></Input>
+                </Form-item>
+                <Form-item prop="childAccountItemName" label="子目名称">
+                    <Input type="text" maxlength="30" v-model="accountControllerSearchForm.childAccountItemName" placeholder="子目名称"></Input>
+                </Form-item>
+                <Form-item prop="buCode" label="所属BU">
+                    <DataSelect class="" v-model="accountControllerSearchForm.buCode" code="BU" transfer @loadFinish="loadFinishVendorType"></DataSelect>
+                </Form-item>
+                <Form-item prop="valid" label="ERP有效性">
+                    <Select v-model="accountControllerSearchForm.valid" @on-change="setGroupName" transfer clearable>
+                        <Option v-for="(option, index) in isERPeffectiveness" :value="option.value" :key="index">{{option.label}}</Option>
+                    </Select>
+                </Form-item>
+                <Form-item prop="emsIsValidity" label="EMS有效性">
+                    <Select v-model="accountControllerSearchForm.emsIsValidity" @on-change="setGroupName" transfer clearable>
+                        <Option v-for="(option, index) in isEMSeffectiveness" :value="option.value" :key="index">{{option.label}}</Option>
+                    </Select>
+                </Form-item>
+            </Form>
+            <div slot="handle-bar">
+                <Button @click.native="search" type="warning" icon="search">查询</Button>
+                <Button @click.native="reset" type="info" icon="loop">重置</Button>
+            </div>
+        </EMSTable>
+    </div>
 </template>
 <script>
 // import { EMSTable, DataSelect } from "ems-components";
@@ -112,24 +112,6 @@ export default {
           }
         },
 
-        // {
-        //   title: "所属BU名称",
-        //   align: "center",
-        //   key: "buName ",
-        //   width: 140,
-        //   render: (h, params) => {
-        //     return h(
-        //       "div",
-        //       {
-        //         attrs: {
-        //           class: "ivu-table-cell ivu-table-cell-ellipsis",
-        //           title: params.row.buName
-        //         }
-        //       },
-        //       params.row.buName
-        //     );
-        //   }
-        // },
         {
           title: "会计科目编码",
           align: "center",
@@ -164,44 +146,6 @@ export default {
                 }
               },
               params.row.accountItemName
-            );
-          }
-        },
-
-        {
-          title: "子目编码",
-          width: 160,
-          align: "center",
-          key: "childAccountItemCode ",
-          render: (h, params) => {
-            return h(
-              "div",
-              {
-                attrs: {
-                  class: "ivu-table-cell ivu-table-cell-ellipsis",
-                  title: params.row.childAccountItemCode
-                }
-              },
-              params.row.childAccountItemCode
-            );
-          }
-        },
-
-        {
-          title: "子目名称",
-          align: "center",
-          key: "childAccountItemName ",
-          minWidth: 160,
-          render: (h, params) => {
-            return h(
-              "div",
-              {
-                attrs: {
-                  class: "ivu-table-cell ivu-table-cell-ellipsis",
-                  title: params.row.childAccountItemName
-                }
-              },
-              params.row.childAccountItemName
             );
           }
         },
@@ -243,78 +187,6 @@ export default {
           }
         },
 
-        {
-          title: "父级",
-          align: "center",
-          key: "parentCode ",
-          minWidth: 160,
-          render: (h, params) => {
-            return h(
-              "div",
-              {
-                attrs: {
-                  class: "ivu-table-cell ivu-table-cell-ellipsis",
-                  title: params.row.parentCode
-                }
-              },
-              params.row.parentCode
-            );
-          }
-        },
-        {
-          title: "科目属性",
-          align: "center",
-          key: "itemProperty ",
-          minWidth: 160,
-          render: (h, params) => {
-            return h(
-              "div",
-              {
-                attrs: {
-                  class: "ivu-table-cell ivu-table-cell-ellipsis",
-                  title: params.row.itemProperty
-                }
-              },
-              params.row.itemProperty
-            );
-          }
-        },
-        {
-          title: "有效日期起",
-          align: "center",
-          key: "effectiveDateStart ",
-          minWidth: 160,
-          render: (h, params) => {
-            return h(
-              "div",
-              {
-                attrs: {
-                  class: "ivu-table-cell ivu-table-cell-ellipsis",
-                  title: params.row.effectiveDateStart
-                }
-              },
-              params.row.effectiveDateStart
-            );
-          }
-        },
-        {
-          title: "有效日期止",
-          align: "center",
-          key: "effectiveDateEnd ",
-          minWidth: 160,
-          render: (h, params) => {
-            return h(
-              "div",
-              {
-                attrs: {
-                  class: "ivu-table-cell ivu-table-cell-ellipsis",
-                  title: params.row.effectiveDateEnd
-                }
-              },
-              params.row.effectiveDateEnd
-            );
-          }
-        },
         {
           title: "ERP有效性",
           align: "center",

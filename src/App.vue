@@ -6,7 +6,7 @@
                 <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
                     <MenuItem name="1-1">
                     <Icon type="ios-navigate"></Icon>
-                    <router-link :to="{ path: 'v-table'}">功能强大的v-table</router-link>
+                    <router-link :to="{ path: 'v-table'}">Table组件</router-link>
                     </MenuItem>
                     <MenuItem name="1-2">
                     <Icon type="ios-search"></Icon>
@@ -19,7 +19,7 @@
 
                     <MenuItem name="1-4">
                     <Icon type="ios-navigate"></Icon>
-                    <router-link :to="{ path: 'select-business-type'}">弹出框选择组件</router-link>
+                    <router-link :to="{ path: 'select-business-type'}">弹出框组件</router-link>
                     </MenuItem>
                     <MenuItem name="1-5">
                     <Icon type="ios-search"></Icon>
@@ -27,17 +27,17 @@
                     </MenuItem>
                     <MenuItem name="1-6">
                     <Icon type="ios-settings"></Icon>
-                    <router-link :to="{ path: 'edite-vendor-info'}">编辑供应商信息</router-link>
+                    <router-link :to="{ path: 'edite-vendor-info'}">弹出框显示表单</router-link>
                     </MenuItem>
 
                     <MenuItem name="1-7">
                     <Icon type="ios-navigate"></Icon>
-                    <router-link :to="{ path: 'select-vendor'}">选择个人/供应商</router-link>
+                    <router-link :to="{ path: 'select-vendor'}">弹出框显示table</router-link>
                     </MenuItem>
-                    <MenuItem name="1-8">
+                    <!-- <MenuItem name="1-8">
                     <Icon type="ios-search"></Icon>
                     <router-link :to="{ path: 'select-company'}">选择归属公司</router-link>
-                    </MenuItem>
+                    </MenuItem> -->
                     <!-- <MenuItem name="1-9">
           <Icon type="ios-settings"></Icon>
           <router-link :to="{ path: 'edite-vendor-info'}">编辑供应商信息</router-link>

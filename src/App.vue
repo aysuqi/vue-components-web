@@ -16,7 +16,6 @@
                     <Icon type="ios-settings"></Icon>
                     <router-link :to="{ path: 'business-type-tree'}">tree组件</router-link>
                     </MenuItem>
-
                     <MenuItem name="1-4">
                     <Icon type="ios-navigate"></Icon>
                     <router-link :to="{ path: 'select-business-type'}">弹出框组件</router-link>
@@ -29,37 +28,20 @@
                     <Icon type="ios-settings"></Icon>
                     <router-link :to="{ path: 'edite-vendor-info'}">弹出框显示表单</router-link>
                     </MenuItem>
-
                     <MenuItem name="1-7">
                     <Icon type="ios-navigate"></Icon>
                     <router-link :to="{ path: 'select-vendor'}">弹出框显示table</router-link>
                     </MenuItem>
-                    <!-- <MenuItem name="1-8">
-                    <Icon type="ios-search"></Icon>
-                    <router-link :to="{ path: 'select-company'}">选择归属公司</router-link>
-                    </MenuItem> -->
-                    <!-- <MenuItem name="1-9">
-          <Icon type="ios-settings"></Icon>
-          <router-link :to="{ path: 'edite-vendor-info'}">编辑供应商信息</router-link>
-          </MenuItem> -->
-
                 </Menu>
             </Sider>
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
-                    <!-- <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px' , background:'#ff00ff'}" type="md-menu" size="24"></Icon> -->
                     <div style="display:inline">
                         <img src="../user.jpg" @click="collapsedSider">
                     </div>
-
                     <div class="headDes">
                         <h2>vue组件库</h2>
                     </div>
-                    <!-- <div class="wrapper-header-nav-list">
-
-            <p>78945612</p>
-
-          </div> -->
                 </Header>
                 <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
                     <router-view />
